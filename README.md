@@ -1,3 +1,6 @@
 # ot-harjoitusty-
 
-Olen tekemässä harjoitus työtä
+## Viikko 1
+
+Loin työn repositorion
+
