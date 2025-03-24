@@ -12,4 +12,4 @@ Loin työn repositorion
 
 * [Vaatimusmäärittely](https://github.com/acpeltol/ot-harjoitusty-/blob/main/miinaharava/dokumentaatio/vaatimusmaarittely.md)
 
-* [Työaikakirjanpito] ()
+* [Työaikakirjanpito] (https://github.com/acpeltol/ot-harjoitusty-/blob/main/miinaharava/dokumentaatio/ty%C3%B6aikakirjanpito.md)
