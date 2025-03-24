@@ -1,0 +1,16 @@
+[project]
+name = "miinaharava"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "acpeltol",email = "apeltola717@gmial.com"}
+]
+readme = "README.md"
+requires-python = "^3.10"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
