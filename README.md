@@ -1,4 +1,4 @@
-# ot-harjoitusty-
+# Miinaharava
 
 ## Laskarit
 
@@ -8,3 +8,8 @@ Tässä linkki [laskareihin](https://github.com/acpeltol/ot-harjoitusty-/tree/ma
 
 Loin työn repositorion
 
+## Dokumentaatio
+
+* [Vaatimusmäärittely](https://github.com/acpeltol/ot-harjoitusty-/blob/main/miinaharava/dokumentaatio/vaatimusmaarittely.md)
+
+* [Työaikakirjanpito] ()
