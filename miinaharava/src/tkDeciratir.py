@@ -1,10 +1,11 @@
 import tkinter as tk
 import time
+from MineField import MineField
 
 class Tkdecorator():
     def __init__(self, master):
-        # saldo on senteissä
         self.master = master
+        self.field = None
 
     def clear_window(self):
         for i in self.master.winfo_children():
@@ -13,12 +14,20 @@ class Tkdecorator():
     def start_game(self, difficulty):
         self.clear_window()
 
-        self.master.configure(bg="darkblue")
+        self.master.configure(bg="lightgrey")
 
-        label4 = tk.Label(self.master,bg="lightblue", text="Peli alkaa!")
+        label4 = tk.Label(self.master,bg="lightgrey", text="Peli alkaa!")
         label4.pack()
 
-        time.sleep(1)
+        if difficulty == 1:
+            self.field = MineField(self.master,8, 8)
+        elif difficulty == 2:
+            self.field = MineField(self.master, 16, 16)
+        else:
+            self.field = MineField(self.master, 20, 20)
+        
+        self.field.create_field()
+        
 
     def choose_difficulty(self):
         self.clear_window()
@@ -38,7 +47,7 @@ class Tkdecorator():
     def decorate(self):
         self.master.title("Minesweeper")
 
-        self.master.geometry("800x600")
+        self.master.geometry("1200x1000")
 
         self.master.configure(bg="lightgreen") 
 

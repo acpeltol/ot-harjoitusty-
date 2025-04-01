@@ -15,3 +15,8 @@ def coverage_report(ctx):
     """Generate coverage report."""
     ctx.run("coverage html", pty=True)
 
+@task()
+def test(ctx):
+    """Run tests."""
+    ctx.run("pytest src", pty=True)
+

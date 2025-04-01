@@ -2,7 +2,7 @@ import unittest
 import tkinter as tk
 from tkDeciratir import Tkdecorator
 
-class TestMaksukortti(unittest.TestCase):
+class TestDecorator(unittest.TestCase):
     def setUp(self):
         print("Set up goes here")
 
