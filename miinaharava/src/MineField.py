@@ -11,21 +11,26 @@ class MineField:
         self.is_game_over = False
         self.is_game_won = False
 
+    def create_field(self):
+        print("Creating field")
+
         self.grid_frame = tk.Frame(self.master)
         self.grid_frame.pack(fill=tk.BOTH, expand=True)
 
-        self.master.update_idletasks()  # Ensure accurate width and height of window
+        ## Generoitu
+
+        self.master.update_idletasks()  
 
         window_width = self.master.winfo_width()
         window_height = self.master.winfo_height()
 
-        x_position = (window_width) // 2
-        y_position = (window_height) // 2
+        x = (window_width) // 2
+        y = (window_height) // 2
 
-        self.grid_frame.place(x=x_position, y=y_position, anchor=tk.CENTER)
+        self.grid_frame.place(x=x, y=y, anchor=tk.CENTER)
 
-    def create_field(self):
-        print("Creating field")
+        ## Generoitu päättyy
+
         for y in range(self.height):
             for x in range(self.width):
 
