@@ -1,6 +1,8 @@
 import tkinter as tk
 import time
-from MineField import MineField
+from enteties.MineFieldEasy import MineFieldEasy
+from enteties.MineFieldMedium import MineFieldMedium
+from enteties.MineFieldHard import MineFieldHard
 
 class Tkdecorator():
     def __init__(self, master):
@@ -20,11 +22,11 @@ class Tkdecorator():
         label4.pack()
 
         if difficulty == 1:
-            self.field = MineField(self.master,8, 8)
+            self.field = MineFieldEasy(self.master)
         elif difficulty == 2:
-            self.field = MineField(self.master, 16, 16)
+            self.field = MineFieldMedium(self.master)
         else:
-            self.field = MineField(self.master, 20, 20)
+            self.field = MineFieldHard(self.master)
         
         self.field.create_field()
         
