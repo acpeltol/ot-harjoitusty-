@@ -1,8 +1,7 @@
 import tkinter as tk
-import time
-from enteties.MineFieldEasy import MineFieldEasy
-from enteties.MineFieldMedium import MineFieldMedium
-from enteties.MineFieldHard import MineFieldHard
+from enteties.mine_field_fasy import MineFieldEasy
+from enteties.mine_field_medium import MineFieldMedium
+from enteties.mine_field_hard import MineFieldHard
 
 class Tkdecorator():
     def __init__(self, master):
@@ -27,9 +26,8 @@ class Tkdecorator():
             self.field = MineFieldMedium(self.master)
         else:
             self.field = MineFieldHard(self.master)
-        
+
         self.field.create_field()
-        
 
     def choose_difficulty(self):
         self.clear_window()
@@ -51,12 +49,13 @@ class Tkdecorator():
 
         self.master.geometry("1200x1000")
 
-        self.master.configure(bg="lightgreen") 
+        self.master.configure(bg="lightgreen")
 
-        label2 = tk.Label(self.master,bg="lightgreen", text="Tervetuloa Miinaharava peliin!")
+        label2 = tk.Label(self.master,bg="lightgreen", text="Welcome to Minesweeper!")
         label2.pack()
 
-        start = tk.Button(self.master, text="Aloita peli", command=lambda: self.choose_difficulty())
+        start = tk.Button(self.master, text="Start the Game!",
+                          command=lambda: self.choose_difficulty())
         start.pack(pady=5)
 
-        self.master.mainloop() 
+        self.master.mainloop()

@@ -1,6 +1,6 @@
 import unittest
 import tkinter as tk
-from tkDeciratir import Tkdecorator
+from tk_deciratir import Tkdecorator
 
 class TestDecorator(unittest.TestCase):
     def setUp(self):
