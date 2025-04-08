@@ -15,7 +15,7 @@ class Field:
     def draw_field(self):
         # Osittain Generoitu alkaa
 
-        self.button = tk.Button(self.master, text="", width=2, height=1, # pylint: disable=attribute-defined-outside-init
+        self.button = tk.Button(self.master, text="", width=2, height=1,
                                 command=lambda x=self.x, y=self.y: self.on_click())
         self.button.bind("<Button-3>", self.on_right_click)
         self.button.grid(row=self.y, column=self.x, padx=1, pady=1, sticky="nsew")
@@ -23,6 +23,7 @@ class Field:
         # Osittain Generoitu päättyy
 
     def on_right_click(self, event): # pylint: disable=unused-argument
+        # Event handleri toimii kun on event atribuutti. Ilman sitä ei toimi
         if self.is_opened:
             return
         if self.is_flagged:

@@ -1,4 +1,5 @@
 # pylint: disable=duplicate-code
+# Tarvitaan muutama samanlainen teidosto mahdollisia integraatioita varten
 import tkinter as tk
 import random as rand
 import sys
@@ -61,7 +62,7 @@ class MineFieldEasy:
     def create_field(self):
         print("Creating field")
 
-        self.grid_frame = tk.Frame(self.master)# pylint: disable=attribute-defined-outside-init
+        self.grid_frame = tk.Frame(self.master)
         self.grid_frame.pack(fill=tk.BOTH, expand=True)
 
         ## Generoitu
