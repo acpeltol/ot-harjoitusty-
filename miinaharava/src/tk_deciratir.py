@@ -3,6 +3,7 @@ from enteties.mine_field_fasy import MineFieldEasy
 from enteties.mine_field_medium import MineFieldMedium
 from enteties.mine_field_hard import MineFieldHard
 
+
 class Tkdecorator():
     def __init__(self, master):
         self.master = master
@@ -17,7 +18,7 @@ class Tkdecorator():
 
         self.master.configure(bg="lightgrey")
 
-        label4 = tk.Label(self.master,bg="lightgrey", text="Peli alkaa!")
+        label4 = tk.Label(self.master, bg="lightgrey", text="Peli alkaa!")
         label4.pack()
 
         if difficulty == 1:
@@ -34,14 +35,18 @@ class Tkdecorator():
 
         self.master.configure(bg="lightgreen")
 
-        label3 = tk.Label(self.master,bg="lightgreen", text="Choose difficulty")
+        label3 = tk.Label(self.master, bg="lightgreen",
+                          text="Choose difficulty")
         label3.pack()
 
-        button1 = tk.Button(self.master, text="Easy", command=lambda: self.start_game(1))
+        button1 = tk.Button(self.master, text="Easy",
+                            command=lambda: self.start_game(1))
         button1.pack(pady=5)
-        button2 = tk.Button(self.master, text="Middle", command=lambda: self.start_game(2))
+        button2 = tk.Button(self.master, text="Middle",
+                            command=lambda: self.start_game(2))
         button2.pack(pady=5)
-        button3 = tk.Button(self.master, text="Hard", command=lambda: self.start_game(3))
+        button3 = tk.Button(self.master, text="Hard",
+                            command=lambda: self.start_game(3))
         button3.pack(pady=5)
 
     def decorate(self):
@@ -51,7 +56,8 @@ class Tkdecorator():
 
         self.master.configure(bg="lightgreen")
 
-        label2 = tk.Label(self.master,bg="lightgreen", text="Welcome to Minesweeper!")
+        label2 = tk.Label(self.master, bg="lightgreen",
+                          text="Welcome to Minesweeper!")
         label2.pack()
 
         start = tk.Button(self.master, text="Start the Game!",

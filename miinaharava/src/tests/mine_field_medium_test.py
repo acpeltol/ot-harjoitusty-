@@ -3,6 +3,7 @@ import tkinter as tk
 from enteties.mine_field_medium import MineFieldMedium
 from enteties.field import Field
 
+
 class TestMineFieldMedium(unittest.TestCase):
     def setUp(self):
         print("Set up goes here")

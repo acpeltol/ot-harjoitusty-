@@ -2,11 +2,12 @@ import unittest
 import tkinter as tk
 from enteties.field import Field
 
+
 class TestDecorator(unittest.TestCase):
     def setUp(self):
         print("Set up goes here")
         self.root = tk.Tk()
-        self.wolf = Field(self.root,8,8)
+        self.wolf = Field(self.root, 8, 8, 50)
         self.wolf.draw_field()
 
     def test_field_values(self):
@@ -19,7 +20,7 @@ class TestDecorator(unittest.TestCase):
         self.assertTrue(self.wolf.is_opened)
         self.assertFalse(self.wolf.is_flagged)
         self.assertEqual(self.wolf.button.bg, "lightgreen")
-        self.assertEqual(self.wolf.on_click(),None)
+        self.assertEqual(self.wolf.on_click(), None)
 
     # def test_on_click_is_mine(self):
     #     self.wolf.is_mine = True
@@ -30,4 +31,3 @@ class TestDecorator(unittest.TestCase):
     #     self.wolf.on_right_click(None)
         # self.assertTrue(self.wolf.is_flagged)
         # self.assertEqual(self.wolf.button.image, None)
-
