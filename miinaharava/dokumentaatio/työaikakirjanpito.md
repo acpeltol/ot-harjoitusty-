@@ -13,4 +13,11 @@ Yhteensä 10 tunita
 
 Yhteensä 13 tuntia
 
-Kokoprojektiin menny aika tähän mennessä 23 tuntia
+- 12.4 | 2 tuntia | Sovelluksen suunittelua ja refaktorointia
+- 13.4 | 4 tuntia | Tominnallisuuden lisäämistä
+- 14.4 | 3 tuntia | Tominnallisuuden lisäämistä, refaktoroinita ja testaamista
+- 15.5 | 5 tunita | Refaktorointia, testaamista, koodin ulkoasun parantamista ja dokimentaatiota
+
+Yhteensä 14 tuntia
+
+Kokoprojektiin menny aika tähän mennessä 37 tuntia
