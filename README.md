@@ -1,5 +1,9 @@
 # Miinaharava
 
+## Viimeinen realease
+
+* [Realease](https://github.com/acpeltol/ot-harjoitusty-/releases/tag/Viikko5)
+
 ## Dokumentaatio
 
 * [Vaatimusmäärittely](https://github.com/acpeltol/ot-harjoitusty-/blob/main/miinaharava/dokumentaatio/vaatimusmaarittely.md)
