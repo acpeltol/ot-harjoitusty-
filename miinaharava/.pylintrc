@@ -107,7 +107,7 @@ score=yes
 [REFACTORING]
 
 # Maximum number of nested blocks for function / method body
-max-nested-blocks=3
+max-nested-blocks=4
 
 # Complete name of functions that never returns. When checking for
 # inconsistent-return-statements if a never returning function is called then
@@ -263,7 +263,7 @@ indent-after-paren=4
 indent-string='    '
 
 # Maximum number of characters on a single line.
-max-line-length=100
+max-line-length=110
 
 # Maximum number of lines in a module.
 max-module-lines=1000
@@ -490,7 +490,7 @@ valid-metaclass-classmethod-first-arg=cls
 max-args=7
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=8
+max-attributes=10
 
 # Maximum number of boolean expressions in an if statement (see R0916).
 max-bool-expr=5

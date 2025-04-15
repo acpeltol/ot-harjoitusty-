@@ -36,7 +36,8 @@ class Field:
             print(f"Button ({self.x}, {self.y}) unflagged.")
         else:
             self.is_flagged = True
-            image = ImageTk.PhotoImage(Image.open("src/images/flag.png").resize((self.size, self.size)))
+            image = ImageTk.PhotoImage(Image.open(
+                "src/images/flag.png").resize((self.size, self.size)))
             self.button.config(image=image)
             self.button.image = image
             print(f"Button ({self.x}, {self.y}) flagged.")
@@ -45,7 +46,8 @@ class Field:
         if self.is_opened or self.is_flagged:
             return
         if self.is_mine:
-            image = ImageTk.PhotoImage(Image.open("src/images/mine.png").resize((self.size, self.size)))
+            image = ImageTk.PhotoImage(Image.open(
+                "src/images/mine.png").resize((self.size, self.size)))
             self.button.config(image=image)
             self.button.image = image
 
@@ -55,7 +57,8 @@ class Field:
         else:
             names = ["one", "two", "three", "four",
                      "five", "six", "seven", "eight"]
-            image = ImageTk.PhotoImage(Image.open(f"src/images/{names[self.mines_near_count - 1]}.png").resize((self.size, self.size)))
+            image = ImageTk.PhotoImage(Image.open(
+                f"src/images/{names[self.mines_near_count - 1]}.png").resize((self.size, self.size)))
             self.button.config(image=image)
             self.button.image = image
 

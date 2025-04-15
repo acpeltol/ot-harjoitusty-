@@ -55,7 +55,7 @@ class FieldStart:
                     print("continue")
                     continue
                 if (y + i < 0 or y + i >= self.height
-                      or x + j < 0 or x + j >= self.width):
+                        or x + j < 0 or x + j >= self.width):
                     print("out of bounds continue")
                     continue
                 if (x + j, y + i) in self.explosion_count:

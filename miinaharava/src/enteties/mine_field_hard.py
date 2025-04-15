@@ -16,6 +16,7 @@ class MineFieldHard:
         self.mines = set()
         self.flags = set()
         self.flags_count = 99
+        self.field_start = FieldStart(self)
 
     def check_flagged(self, x, y):
         if self.field[y][x].is_flagged is True:
@@ -68,26 +69,24 @@ class MineFieldHard:
     def create_field(self):
         print("Creating field")
 
-        self.grid_frame = tk.Frame(self.master)
-        self.grid_frame.pack(fill=tk.BOTH, expand=True)
+        grid_frame = tk.Frame(self.master)
+        grid_frame.pack(fill=tk.BOTH, expand=True)
 
         # Generoitu
 
         self.master.update_idletasks()
 
         for y in range(self.height):
-            self.grid_frame.rowconfigure(y, weight=1)
+            grid_frame.rowconfigure(y, weight=1)
         for x in range(self.width):
-            self.grid_frame.columnconfigure(x, weight=1)
+            grid_frame.columnconfigure(x, weight=1)
 
         # Generoitu päättyy
 
         for y in range(self.height):
             for x in range(self.width):
 
-                self.field[y][x] = Field(self.grid_frame, x, y, 50)
+                self.field[y][x] = Field(grid_frame, x, y, 50)
                 self.field[y][x].draw_field()
-
-        self.field_start = FieldStart(self)
 
         self.field_start.start(self.after_field_created)
