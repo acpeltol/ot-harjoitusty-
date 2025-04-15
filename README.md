@@ -1,5 +1,7 @@
 # Miinaharava
 
+Miinaharava on klassikkopeli vielä 80-luvulta. Tässä projektissa pääsette pelaamaan uutta miinaharavan implementaatiota samoilla vanhoilla tominnalliskuuksilla.
+
 ## Viimeinen realease
 
 * [Realease](https://github.com/acpeltol/ot-harjoitusty-/releases/tag/Viikko5)
