@@ -1,8 +1,5 @@
 import tkinter as tk
-from enteties.mine_field_fasy import MineFieldEasy
 from enteties.mine_field_medium import MineFieldMedium
-from enteties.mine_field_hard import MineFieldHard
-
 
 class Tkdecorator():
     def __init__(self, master):
@@ -22,32 +19,45 @@ class Tkdecorator():
         label4.pack()
 
         if difficulty == 1:
-            self.field = MineFieldEasy(self.master)
+            self.field = MineFieldMedium(self.master, 8, 8, 100,10)
         elif difficulty == 2:
-            self.field = MineFieldMedium(self.master)
+            self.field = MineFieldMedium(self.master, 14, 14, 60, 40)
         else:
-            self.field = MineFieldHard(self.master)
+            self.field = MineFieldMedium(self.master, 20, 20, 50, 80)
 
         self.field.create_field()
+
+    def draw_button(self, text,difficulty):
+
+        button1 = tk.Button(self.master, text=text,
+                            command=lambda: self.start_game(difficulty))
+        button1.pack(pady=5)
+
+    def draw_label(self, text):
+
+        label3 = tk.Label(self.master, bg="lightgreen",
+                          text=text)
+        label3.pack()
+
 
     def choose_difficulty(self):
         self.clear_window()
 
         self.master.configure(bg="lightgreen")
 
-        label3 = tk.Label(self.master, bg="lightgreen",
-                          text="Choose difficulty")
-        label3.pack()
+        self.draw_label("Choose difficulty")
 
-        button1 = tk.Button(self.master, text="Easy",
-                            command=lambda: self.start_game(1))
-        button1.pack(pady=5)
-        button2 = tk.Button(self.master, text="Middle",
-                            command=lambda: self.start_game(2))
-        button2.pack(pady=5)
-        button3 = tk.Button(self.master, text="Hard",
-                            command=lambda: self.start_game(3))
-        button3.pack(pady=5)
+        self.draw_button("Easy",1)
+
+        self.draw_label("8x8, 10 mines")
+
+        self.draw_button("Medium",2)
+
+        self.draw_label("14x14, 40 mines")
+
+        self.draw_button("Hard",3)
+
+        self.draw_label("20x20, 80 mines")
 
     def decorate(self):
         self.master.title("Minesweeper")

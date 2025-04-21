@@ -1,4 +1,5 @@
 import tkinter as tk
+import pygame as pg
 from PIL import Image, ImageTk
 
 
@@ -25,6 +26,13 @@ class Field:
 
         # Osittain Generoitu päättyy
 
+    def check_sound(self, many, file):
+        if many == False:
+            pg.mixer.init()
+            sound = pg.mixer.Sound(file)
+            sound.play()
+
+
     def on_right_click(self, event):  # pylint: disable=unused-argument
         # Event handleri toimii kun on event atribuutti. Ilman sitä ei toimi
         if self.is_opened:
@@ -42,19 +50,39 @@ class Field:
             self.button.image = image
             print(f"Button ({self.x}, {self.y}) flagged.")
 
-    def on_click(self):
+    def on_click(self, many = False):
         if self.is_opened or self.is_flagged:
             return
         if self.is_mine:
+            # if many == False:
+            #     pg.mixer.init()
+            #     sound = pg.mixer.Sound("src/audio/cinematic_explosion.wav")
+            #     sound.play()
+
+            self.check_sound(many, "src/audio/cinematic_explosion.wav")
             image = ImageTk.PhotoImage(Image.open(
                 "src/images/mine.png").resize((self.size, self.size)))
             self.button.config(image=image)
             self.button.image = image
 
         elif self.mines_near_count == 0:
+            # if many == False:
+            #     pg.mixer.init()
+            #     sound = pg.mixer.Sound("src/audio/minesweeper_dig_once.wav")
+            #     sound.play()
+
+            self.check_sound(many, "src/audio/minesweeper_dig_once.wav")
+
             self.button.config(bg="lightgreen")
             self.button.bg = "lightgreen"
         else:
+            # if many == False:
+            #     pg.mixer.init()
+            #     sound = pg.mixer.Sound("src/audio/minesweeper_dig_once.wav")
+            #     sound.play()
+
+            self.check_sound(many, "src/audio/minesweeper_dig_once.wav")
+            
             names = ["one", "two", "three", "four",
                      "five", "six", "seven", "eight"]
             image = ImageTk.PhotoImage(Image.open(

@@ -1,4 +1,5 @@
 import random as rand
+import pygame as pg
 
 
 class FieldStart:
@@ -62,12 +63,12 @@ class FieldStart:
                     continue
                 if self.parent.field[y + i][x + j].mines_near_count == 0:
                     print(f"open {x + j}, {y + i}")
-                    self.parent.field[y + i][x + j].on_click()
+                    self.parent.field[y + i][x + j].on_click(True)
                     self.explosion_count.add((x + j, y + i))
                     self.open_fields((x + j, y + i))
                 else:
                     print(f"open {x + j}, {y + i}")
-                    self.parent.field[y + i][x + j].on_click()
+                    self.parent.field[y + i][x + j].on_click(True)
                     self.explosion_count.add((x + j, y + i))
 
         return True
@@ -84,6 +85,11 @@ class FieldStart:
         for y in range(self.height):
             for x in range(self.width):
                 if self.parent.field[y][x].is_opened is True:
+
+                    pg.mixer.init()
+                    sound = pg.mixer.Sound("src/audio/minesweeper_dig_once.wav")
+                    sound.play()
+
                     self.banned.add((x, y))
                     self.banned.add((x + 1, y))
                     self.banned.add((x - 1, y))

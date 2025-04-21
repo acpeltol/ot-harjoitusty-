@@ -8,7 +8,7 @@ class TestMineFieldMedium(unittest.TestCase):
     def setUp(self):
         print("Set up goes here")
         self.root = tk.Tk()
-        self.wolf = MineFieldMedium(self.root)
+        self.wolf = MineFieldMedium(self.root, 14, 14, 60, 40)
 
     def test_mine_field_easy(self):
         self.assertEqual(self.wolf.width, 14)

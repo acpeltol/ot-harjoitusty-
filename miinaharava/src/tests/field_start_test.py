@@ -1,7 +1,7 @@
 import unittest
 import tkinter as tk
 from enteties.filed_start import FieldStart
-from enteties.mine_field_fasy import MineFieldEasy
+from enteties.mine_field_medium import MineFieldMedium
 from enteties.field import Field
 
 
@@ -9,7 +9,7 @@ class TestDecorator(unittest.TestCase):
     def setUp(self):
         print("Set up goes here")
         self.master = tk.Tk()
-        self.father_wolf = MineFieldEasy(self.master)
+        self.father_wolf = MineFieldMedium(self.master, 8, 8, 100,10)
         self.wolf = FieldStart(self.father_wolf)
 
     def test_field_values(self):

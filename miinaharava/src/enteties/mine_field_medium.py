@@ -2,20 +2,22 @@
 # Tarvitaan muutama samanlainen teidosto mahdollisia integraatioita varten
 import tkinter as tk
 import time
+import pygame as pg
 from enteties.field import Field
 from enteties.filed_start import FieldStart
 
 
 class MineFieldMedium:
-    def __init__(self, master):
+    def __init__(self, master, width, height, image_size, flags_count):
         self.master = master
-        self.width = 14
-        self.height = 14
+        self.width = width
+        self.height = height
         self.field = [[None for _ in range(self.width)]
                       for _ in range(self.height)]
         self.mines = set()
         self.flags = set()
-        self.flags_count = 40
+        self.flags_count = flags_count
+        self.image_size = image_size
         self.field_start = FieldStart(self)
 
     def check_flagged(self, x, y):
@@ -41,6 +43,9 @@ class MineFieldMedium:
 
                 if self.field[y][x].is_mine is True and self.field[y][x].is_opened is True:
                     print("Destroy the window")
+                    # pg.mixer.init()
+                    # sound = pg.mixer.Sound("src/audio/cinematic_explosion.wav")
+                    # sound.play()
                     time.sleep(1)
                     label = tk.Label(self.master, bg="lightgrey",
                                      text="You Lost!", font=("Arial", 20))
@@ -48,6 +53,10 @@ class MineFieldMedium:
                     self.master.after(2000, self.master.quit)
 
                 self.check_flagged(x, y)
+
+                if (self.field[y][x].is_opened is True) and (self.field[y][x].mines_near_count == 0) and ((y, x) not in self.field_start.explosion_count):
+                    print(f"Explosion open {x}, {y}")
+                    self.field_start.open_fields((x, y))
 
                 if self.field[y][x].is_opened is True:
                     opened_count += 1
@@ -86,7 +95,7 @@ class MineFieldMedium:
         for y in range(self.height):
             for x in range(self.width):
 
-                self.field[y][x] = Field(grid_frame, x, y, 70)
+                self.field[y][x] = Field(grid_frame, x, y, self.image_size)
                 self.field[y][x].draw_field()
 
         self.field_start.start(self.after_field_created)
