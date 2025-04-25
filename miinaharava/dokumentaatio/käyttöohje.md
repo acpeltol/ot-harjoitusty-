@@ -16,16 +16,16 @@ poetry run invoke start
 
 ## Aloitus
 
-![Alt text](kuvat/aloitus.jpeg)
+![Alt text](kuvat/aloitus.png)
 
 ## Vaikeustason valitseminen
 
-![Alt text](kuvat/vaikeus.jpeg)
+![Alt text](kuvat/vaikeus.png)
 
 ## Pelin aloitus
 
-![Alt text](kuvat/harava.jpeg)
+![Alt text](kuvat/harava.png)
 
 ## Pelaaminen
 
-![Alt text](kuvat/peli.jpeg)
+![Alt text](kuvat/peli.png)
