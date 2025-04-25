@@ -14,4 +14,18 @@ poetry run invoke build
 
 poetry run invoke start
 
-## 
+## Aloitus
+
+![Alt text](kuvat/aloitus.jpeg)
+
+## Vaikeustason valitseminen
+
+![Alt text](kuvat/vaikeus.jpeg)
+
+## Pelin aloitus
+
+![Alt text](kuvat/harava.jpeg)
+
+## Pelaaminen
+
+![Alt text](kuvat/peli.jpeg)
