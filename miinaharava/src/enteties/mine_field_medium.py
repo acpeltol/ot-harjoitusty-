@@ -2,12 +2,12 @@
 # Tarvitaan muutama samanlainen teidosto mahdollisia integraatioita varten
 import tkinter as tk
 import time
-import pygame as pg
 from enteties.field import Field
 from enteties.filed_start import FieldStart
 
 
 class MineFieldMedium:
+    ' ' 'Class for creating a mine field and handeling game status' ' '
     def __init__(self, master, width, height, image_size, flags_count):
         self.master = master
         self.width = width
@@ -21,6 +21,7 @@ class MineFieldMedium:
         self.field_start = FieldStart(self)
 
     def check_flagged(self, x, y):
+        ' ' 'Checking if certain field is flagged and update the information in the class' ' '
         if self.field[y][x].is_flagged is True:
             if (x, y) in self.flags:
                 return
@@ -34,40 +35,57 @@ class MineFieldMedium:
             self.flags_count += 1
             print(self.flags)
 
-    def game_status(self):
+    def check_if_empty_field(self, x, y):
+        ' ' 'Checking if certain field is empty and call another function to open fields nearby' ' '
+        if self.field[y][x].is_opened is False:
+            return
+        if self.field[y][x].mines_near_count != 0:
+            return
+        if (x, y) in self.field_start.explosion_count:
+            return
+        if self.field[y][x].is_mine is True:
+            return
 
-        opened_count = 0
+        self.field_start.open_fields((x, y))
 
-        for y in range(self.height):
-            for x in range(self.width):
-
-                if self.field[y][x].is_mine is True and self.field[y][x].is_opened is True:
-                    print("Destroy the window")
-                    # pg.mixer.init()
-                    # sound = pg.mixer.Sound("src/audio/cinematic_explosion.wav")
-                    # sound.play()
-                    time.sleep(1)
-                    label = tk.Label(self.master, bg="lightgrey",
-                                     text="You Lost!", font=("Arial", 20))
-                    label.place(relx=0.5, rely=0.5, anchor='center')
-                    self.master.after(2000, self.master.quit)
-
-                self.check_flagged(x, y)
-
-                if (self.field[y][x].is_opened is True) and (self.field[y][x].mines_near_count == 0) and ((y, x) not in self.field_start.explosion_count):
-                    print(f"Explosion open {x}, {y}")
-                    self.field_start.open_fields((x, y))
-
-                if self.field[y][x].is_opened is True:
-                    opened_count += 1
-
-        if opened_count == self.width * self.height - len(self.mines):
+    def check_vicotry(self, count):
+        ' ' 'Checking if the game is won' ' '
+        if count == self.width * self.height - len(self.mines):
             print("You won!")
             time.sleep(1)
             label = tk.Label(self.master, bg="lightgrey",
                              text="You won!", font=("Arial", 20))
             label.place(relx=0.5, rely=0.5, anchor='center')
             self.master.after(2000, self.master.quit)
+
+    def chekc_loose(self, x, y):
+        ' ' 'Checking if the game is lost' ' '
+        if self.field[y][x].is_mine is True and self.field[y][x].is_opened is True:
+            print("Destroy the window")
+            time.sleep(1)
+            label = tk.Label(self.master, bg="lightgrey",
+                             text="You Lost!", font=("Arial", 20))
+            label.place(relx=0.5, rely=0.5, anchor='center')
+            self.master.after(2000, self.master.quit)
+
+    def game_status(self):
+        ' ' 'Checking the game status by looping the state of every field' ' '
+
+        opened_count = 0
+
+        for y in range(self.height):
+            for x in range(self.width):
+
+                self.chekc_loose(x, y)
+
+                self.check_flagged(x, y)
+
+                self.check_if_empty_field(x, y)
+
+                if self.field[y][x].is_opened is True:
+                    opened_count += 1
+
+        self.check_vicotry(opened_count)
 
         self.master.after(100, self.game_status)
 
