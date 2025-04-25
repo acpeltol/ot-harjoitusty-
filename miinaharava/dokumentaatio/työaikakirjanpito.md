@@ -20,4 +20,11 @@ Yhteensä 13 tuntia
 
 Yhteensä 14 tuntia
 
-Kokoprojektiin menny aika tähän mennessä 37 tuntia
+- 21.4 | 4 tuntia | Uuden toiminnallisuuden luomista ja äänieffekti tomintaa tutustumista
+- 22.4 | 3 tuntia | Uuden toiminnallisuuden luomista ja refaktorointia
+- 23.4 | 2 tunita | Koodin refatorointia ja laadun parantamista
+- 25.4 | 5 tuntia | Testaamista, koodin laadun prantamista ja dokumentatiota
+
+Yhteensä 14 tuntia
+
+Kokoprojektiin menny aika tähän mennessä 51 tuntia
