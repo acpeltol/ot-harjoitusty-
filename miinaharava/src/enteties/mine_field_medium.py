@@ -89,9 +89,9 @@ class MineFieldMedium:
 
         self.master.after(100, self.game_status)
 
-    def after_field_created(self):
-        print("Field created")
-        self.game_status()
+    # def after_field_created(self):
+    #     print("Field created")
+    #     self.game_status()
 
     def create_field(self):
         print("Creating field")
@@ -116,4 +116,5 @@ class MineFieldMedium:
                 self.field[y][x] = Field(grid_frame, x, y, self.image_size)
                 self.field[y][x].draw_field()
 
-        self.field_start.start(self.after_field_created)
+        # self.field_start.start(self.after_field_created)
+        self.field_start.start(self.game_status)

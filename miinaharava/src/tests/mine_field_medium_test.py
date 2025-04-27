@@ -24,10 +24,10 @@ class TestMineFieldMedium(unittest.TestCase):
         self.assertEqual(len(self.wolf.field[0]), 14)
         self.assertTrue(isinstance(self.wolf.field[0][0], Field))
 
-    def test_after_field_create(self):
-        self.wolf.game_status = MagicMock()
-        self.wolf.after_field_created()
-        self.wolf.game_status.assert_called_once()
+    # def test_after_field_create(self):
+    #     self.wolf.game_status = MagicMock()
+    #     self.wolf.after_field_created()
+    #     self.wolf.game_status.assert_called_once()
 
     def test_check_flagged(self):
         self.wolf.field[0][0].is_flagged = True
