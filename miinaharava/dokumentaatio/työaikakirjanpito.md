@@ -24,7 +24,8 @@ Yhteensä 14 tuntia
 - 22.4 | 3 tuntia | Uuden toiminnallisuuden luomista ja refaktorointia
 - 23.4 | 2 tunita | Koodin refatorointia ja laadun parantamista
 - 25.4 | 5 tuntia | Testaamista, koodin laadun prantamista ja dokumentatiota
+- 27.4 | 1 tuntia | Pientä korjaamista
 
-Yhteensä 14 tuntia
+Yhteensä 15 tuntia
 
-Kokoprojektiin menny aika tähän mennessä 51 tuntia
+Kokoprojektiin menny aika tähän mennessä 52 tuntia
