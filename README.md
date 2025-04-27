@@ -18,7 +18,7 @@ Miinaharava on klassikkopeli vielä 80-luvulta. Tässä projektissa pääsette p
 
 ## Asennus 
 
-1. Asenna riippuvuudet komennolla:
+1. Siirry miinaharava hakemistoon ja asenna riippuvuudet komennolla:
 
 poetry Install
 
@@ -31,6 +31,8 @@ poetry run invoke build
 poetry run invoke start
 
 ## Komentorivitoiminnot
+
+Kaikki komennot suoritetaan miinaharava hakemistossa!
 
 ### Suoritus
 
