@@ -8,10 +8,11 @@ from enteties.filed_start import FieldStart
 
 class MineFieldMedium:
     ' ' 'Class for creating a mine field and handeling game status' ' '
-    def __init__(self, master, width, height, image_size, flags_count):
+    def __init__(self, master, width, height, image_size, flags_count, parent):
         self.master = master
         self.width = width
         self.height = height
+        self.parent = parent
         self.field = [[None for _ in range(self.width)]
                       for _ in range(self.height)]
         self.mines = set()
@@ -19,6 +20,7 @@ class MineFieldMedium:
         self.flags_count = flags_count
         self.image_size = image_size
         self.field_start = FieldStart(self)
+        self.game_goig = True
 
     def check_flagged(self, x, y):
         ' ' 'Checking if certain field is flagged and update the information in the class' ' '
@@ -27,13 +29,13 @@ class MineFieldMedium:
                 return
             self.flags.add((x, y))
             self.flags_count -= 1
-            print(self.flags)
         else:
             if (x, y) not in self.flags:
                 return
             self.flags.remove((x, y))
             self.flags_count += 1
-            print(self.flags)
+
+        self.draw_flag_count(True)
 
     def check_if_empty_field(self, x, y):
         ' ' 'Checking if certain field is empty and call another function to open fields nearby' ' '
@@ -52,21 +54,23 @@ class MineFieldMedium:
         ' ' 'Checking if the game is won' ' '
         if count == self.width * self.height - len(self.mines):
             print("You won!")
-            time.sleep(1)
+            self.game_goig = False
             label = tk.Label(self.master, bg="lightgrey",
                              text="You won!", font=("Arial", 20))
             label.place(relx=0.5, rely=0.5, anchor='center')
-            self.master.after(2000, self.master.quit)
+            time.sleep(2)
+            self.parent.choose_difficulty()
 
     def chekc_loose(self, x, y):
         ' ' 'Checking if the game is lost' ' '
         if self.field[y][x].is_mine is True and self.field[y][x].is_opened is True:
             print("Destroy the window")
+            self.game_goig = False
             time.sleep(1)
             label = tk.Label(self.master, bg="lightgrey",
                              text="You Lost!", font=("Arial", 20))
-            label.place(relx=0.5, rely=0.5, anchor='center')
-            self.master.after(2000, self.master.quit)
+            time.sleep(2)
+            self.parent.choose_difficulty()
 
     def game_status(self):
         ' ' 'Checking the game status by looping the state of every field' ' '
@@ -87,19 +91,31 @@ class MineFieldMedium:
 
         self.check_vicotry(opened_count)
 
+        if self.game_goig is False:
+            return
+
         self.master.after(100, self.game_status)
 
-    # def after_field_created(self):
-    #     print("Field created")
-    #     self.game_status()
+    def draw_flag_count(self, being=False):
+        ' ' 'Drawing the flag count on the screen' ' '
+        if being is False:
+            # Genoroitu alkaa
+            self.flag_label = tk.Label(self.master, text=f"Flags: {self.flags_count}", font=("Arial", 14))
+            self.flag_label.pack(pady=(5, 0))  # top padding only
+            # Genoroitu päättyy
+        else:
+            self.flag_label.config(text=f"Flags: {self.flags_count}")
+            self.flag_label.update_idletasks()
 
     def create_field(self):
         print("Creating field")
 
+        # Generoitu alkaa
+
+        self.draw_flag_count()
+
         grid_frame = tk.Frame(self.master)
         grid_frame.pack(fill=tk.BOTH, expand=True)
-
-        # Generoitu
 
         self.master.update_idletasks()
 
@@ -113,7 +129,7 @@ class MineFieldMedium:
         for y in range(self.height):
             for x in range(self.width):
 
-                self.field[y][x] = Field(grid_frame, x, y, self.image_size)
+                self.field[y][x] = Field(grid_frame, x, y, self.image_size, self)
                 self.field[y][x].draw_field()
 
         # self.field_start.start(self.after_field_created)

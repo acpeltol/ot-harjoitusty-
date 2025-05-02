@@ -2,17 +2,21 @@ import unittest
 import tkinter as tk
 from unittest.mock import patch, MagicMock
 from enteties.field import Field
+from enteties.mine_field_medium import MineFieldMedium
+from tk_deciratir import Tkdecorator
 
 
 class TestDecorator(unittest.TestCase):
     def setUp(self):
         print("Set up goes here")
-        self.root = tk.Tk()
-        self.wolf = Field(self.root, 8, 8, 50)
+        self.master = tk.Tk()
+        self.tkDec = Tkdecorator(self.master)
+        self.father_wolf = MineFieldMedium(self.master, 8, 8, 100,10, self.tkDec)
+        self.wolf = Field(self.master, 8, 8, 50, self.father_wolf)
         self.wolf.draw_field()
 
     def test_field_values(self):
-        self.assertEqual(self.wolf.master, self.root)
+        self.assertEqual(self.wolf.master, self.master)
         self.assertEqual(self.wolf.x, 8)
         self.assertEqual(self.wolf.y, 8)
 

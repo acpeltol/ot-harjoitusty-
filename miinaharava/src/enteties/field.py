@@ -5,9 +5,10 @@ from PIL import Image, ImageTk
 
 class Field:
     ' ' 'Class for creating one field and handeling the status of it' ' '
-    def __init__(self, master, x, y, size):
+    def __init__(self, master, x, y, size, parent):
         self.x = x
         self.y = y
+        self.parent = parent
         self.master = master
         self.is_mine = False
         self.is_opened = False
@@ -51,11 +52,15 @@ class Field:
             return
         if self.is_flagged:
             self.check_sound(False, "src/audio/minesweeper_dig_once.wav")
+
             self.button.config(image="")
             self.button.image = None
+
             self.is_flagged = False
             print(f"Button ({self.x}, {self.y}) unflagged.")
         else:
+            if self.parent.flags_count == 0:
+                return
             self.check_sound(False, "src/audio/minesweeper_dig_once.wav")
             self.is_flagged = True
             self.draw_button("src/images/flag.png")
@@ -83,6 +88,9 @@ class Field:
 
             names = ["one", "two", "three", "four",
                      "five", "six", "seven", "eight"]
+            
+            self.button.config(bg="lightgreen")
+            #self.button.bg = "lightgreen"
 
             self.draw_button(f"src/images/{names[self.mines_near_count - 1]}.png")
 

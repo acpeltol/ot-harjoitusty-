@@ -1,15 +1,18 @@
 import unittest
 import tkinter as tk
+from unittest.mock import patch, MagicMock
 from enteties.filed_start import FieldStart
 from enteties.mine_field_medium import MineFieldMedium
 from enteties.field import Field
+import tk_deciratir
 
 
 class TestDecorator(unittest.TestCase):
     def setUp(self):
         print("Set up goes here")
         self.master = tk.Tk()
-        self.father_wolf = MineFieldMedium(self.master, 8, 8, 100,10)
+        self.tkDec = tk_deciratir.Tkdecorator(self.master)
+        self.father_wolf = MineFieldMedium(self.master, 8, 8, 100,10, self.tkDec)
         self.wolf = FieldStart(self.father_wolf)
 
     def test_field_values(self):
@@ -23,7 +26,7 @@ class TestDecorator(unittest.TestCase):
 
         for y in range(self.father_wolf.height):
             for x in range(self.father_wolf.width):
-                self.father_wolf.field[y][x] = Field(self.grid_frame, x, y, 100)
+                self.father_wolf.field[y][x] = Field(self.grid_frame, x, y, 100, self.father_wolf)
                 self.father_wolf.field[y][x].draw_field()
 
         self.father_wolf.field[2][2].is_opened = True
@@ -52,7 +55,7 @@ class TestDecorator(unittest.TestCase):
 
         for y in range(self.father_wolf.height):
             for x in range(self.father_wolf.width):
-                self.father_wolf.field[y][x] = Field(self.grid_frame, x, y, 100)
+                self.father_wolf.field[y][x] = Field(self.grid_frame, x, y, 100, self.father_wolf)
                 self.father_wolf.field[y][x].draw_field()
 
         self.father_wolf.field[2][2].is_opened = True

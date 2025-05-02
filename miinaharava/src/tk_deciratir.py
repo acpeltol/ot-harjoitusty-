@@ -22,11 +22,11 @@ class Tkdecorator():
         label4.pack()
 
         if difficulty == 1:
-            self.field = MineFieldMedium(self.master, 8, 8, 100,10)
+            self.field = MineFieldMedium(self.master, 8, 8, 100,10,self)
         elif difficulty == 2:
-            self.field = MineFieldMedium(self.master, 14, 14, 60, 40)
+            self.field = MineFieldMedium(self.master, 14, 14, 60, 40,self)
         else:
-            self.field = MineFieldMedium(self.master, 17, 17, 50, 60)
+            self.field = MineFieldMedium(self.master, 17, 17, 50, 60, self)
 
         self.field.create_field()
 
