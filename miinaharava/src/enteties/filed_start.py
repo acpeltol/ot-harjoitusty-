@@ -54,7 +54,6 @@ class FieldStart:
 
         for i in range(-1, 2):
             for j in range(-1, 2):
-                # print(f"i: {y + i}, j: {x + j}")
                 if (i == 0 and j == 0):
                     continue
                 if (y + i < 0 or y + i >= self.height
@@ -104,6 +103,6 @@ class FieldStart:
                     if finnish:
                         finnish()
 
-                    return True
+                    return
 
         self.parent.master.after(100, lambda: self.start(finnish))

@@ -2,7 +2,6 @@ import unittest
 import tkinter as tk
 from unittest.mock import patch, MagicMock
 from tk_deciratir import Tkdecorator
-from enteties.mine_field_medium import MineFieldMedium
 
 
 class TestDecorator(unittest.TestCase):
@@ -11,7 +10,6 @@ class TestDecorator(unittest.TestCase):
         self.root = tk.Tk()
         self.wolf = Tkdecorator(self.root)
         self.wolf.clear_window = MagicMock()
-        #self.wolf.master = MagicMock()
 
     def test_decorator(self):
         self.assertEqual(self.wolf.master, self.root)
@@ -25,7 +23,6 @@ class TestDecorator(unittest.TestCase):
         self.wolf.choose_difficulty()
 
         self.wolf.clear_window.assert_called_once()
-        # self.wolf.master.configure.assert_called_with(bg="lightgreen")
         self.wolf.draw_label.assert_any_call("Choose difficulty")
         self.wolf.draw_button.assert_any_call("Easy", 1)
         self.wolf.draw_label.assert_any_call("8x8, 10 mines")

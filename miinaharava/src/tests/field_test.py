@@ -17,8 +17,8 @@ class TestDecorator(unittest.TestCase):
 
     def test_field_values(self):
         self.assertEqual(self.wolf.master, self.master)
-        self.assertEqual(self.wolf.x, 8)
-        self.assertEqual(self.wolf.y, 8)
+        self.assertEqual(self.wolf.coordinates[0], 8)
+        self.assertEqual(self.wolf.coordinates[1], 8)
 
     def test_on_click_not_mine(self):
         self.wolf.on_click()
@@ -69,12 +69,5 @@ class TestDecorator(unittest.TestCase):
         self.wolf.on_right_click("MouseButton-3")
         self.wolf.check_sound.assert_called_once()
         self.assertFalse(self.wolf.is_flagged)
-        # self.wolf.draw_button.assert_called_once()
-
-
-    # def test_on_right_click(self):
-    #     self.wolf.on_right_click(None)
-        # self.assertTrue(self.wolf.is_flagged)
-        # self.assertEqual(self.wolf.button.image, None)
 
     

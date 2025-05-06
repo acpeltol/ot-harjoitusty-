@@ -65,19 +65,5 @@ class TestMineFieldMedium(unittest.TestCase):
 
         self.wolf.field_start.open_fields.assert_called_once()
 
-    # def test_game_status(self):
-    #     self.wolf.check_vicotry = MagicMock()
-    #     self.wolf.chekc_loose = MagicMock()
-    #     self.wolf.check_if_empty_field = MagicMock()
-    #     self.wolf.check_flagged = MagicMock()
-    #     self.wolf.field[0][0].is_opened = True
-
-    #     self.wolf.game_status()
-    #     self.wolf.check_flagged.assert_any_call()
-    #     self.wolf.chekc_loose.assert_any_call()
-    #     self.wolf.check_if_empty_field.assert_any_call()
-    #     self.wolf.check_vicotry.assert_any_call()
-
-
 
     

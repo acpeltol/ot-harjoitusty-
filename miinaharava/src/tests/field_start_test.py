@@ -68,8 +68,6 @@ class TestDecorator(unittest.TestCase):
 
         one = next(iter(self.father_wolf.mines))
 
-        print(self.father_wolf.mines)
-
         print(one)
 
         x = one[1]
@@ -78,3 +76,51 @@ class TestDecorator(unittest.TestCase):
         boolen = self.father_wolf.field[x][y].is_mine
 
         self.assertEqual(boolen, True)
+
+    def test_first_explosion(self):
+
+        self.wolf.set_mines = MagicMock()
+        self.wolf.set_mines_near = MagicMock()
+        self.wolf.open_fields = MagicMock()
+
+        self.wolf.first_explosion()
+
+        self.wolf.set_mines.assert_called_once()
+        self.wolf.set_mines_near.assert_called_once()
+        self.wolf.open_fields.assert_called_once()
+
+    def test_start(self):
+
+        finnis = MagicMock()
+
+        self.grid_frame = tk.Frame(self.master)
+        self.grid_frame.pack(fill=tk.BOTH, expand=True)
+
+        for y in range(self.father_wolf.height):
+            for x in range(self.father_wolf.width):
+                self.father_wolf.field[y][x] = Field(self.grid_frame, x, y, 100, self.father_wolf)
+                self.father_wolf.field[y][x].draw_field()
+
+        self.father_wolf.field[2][2].is_opened = True
+
+        self.wolf.first_explosion = MagicMock()
+
+        self.wolf.start(finnis)
+
+        self.assertTrue((2,2) in self.wolf.banned)
+        self.assertTrue((3,2) in self.wolf.banned)
+        self.assertTrue((1,2) in self.wolf.banned)
+        self.assertTrue((2,3) in self.wolf.banned)
+        self.assertTrue((2,1) in self.wolf.banned)
+        self.assertTrue((3,3) in self.wolf.banned)
+        self.assertTrue((1,3) in self.wolf.banned)
+        self.assertTrue((3,1) in self.wolf.banned)
+        self.assertTrue((1,1) in self.wolf.banned)
+
+        self.wolf.first_explosion.assert_called_once()
+
+        finnis.assert_called_once()
+
+
+
+        

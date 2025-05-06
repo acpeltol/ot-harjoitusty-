@@ -78,7 +78,8 @@ class Tkdecorator():
         label2.pack()
 
         start = tk.Button(self.master, text="Start the Game!",
-                          command=lambda: self.choose_difficulty())
+                          command=lambda: self.choose_difficulty()) # pylint: disable=unnecessary-lambda
+        # Koodi ei toimi ilman lambdaa
         start.pack(pady=5)
 
         self.master.mainloop()

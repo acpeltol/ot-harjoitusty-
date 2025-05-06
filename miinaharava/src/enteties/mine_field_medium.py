@@ -1,5 +1,3 @@
-# pylint: disable=duplicate-code
-# Tarvitaan muutama samanlainen teidosto mahdollisia integraatioita varten
 import tkinter as tk
 import time
 from enteties.field import Field
@@ -21,6 +19,7 @@ class MineFieldMedium:
         self.image_size = image_size
         self.field_start = FieldStart(self)
         self.game_goig = True
+        self.flag_label = None
 
     def check_flagged(self, x, y):
         ' ' 'Checking if certain field is flagged and update the information in the class' ' '
@@ -69,6 +68,7 @@ class MineFieldMedium:
             time.sleep(1)
             label = tk.Label(self.master, bg="lightgrey",
                              text="You Lost!", font=("Arial", 20))
+            label.place(relx=0.5, rely=0.5, anchor='center')
             time.sleep(2)
             self.parent.choose_difficulty()
 
@@ -98,6 +98,7 @@ class MineFieldMedium:
 
     def draw_flag_count(self, being=False):
         ' ' 'Drawing the flag count on the screen' ' '
+
         if being is False:
             # Genoroitu alkaa
             self.flag_label = tk.Label(self.master, text=f"Flags: {self.flags_count}", font=("Arial", 14))
