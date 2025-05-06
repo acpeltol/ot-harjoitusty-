@@ -15,3 +15,7 @@ Peli on nytten kelpoinen pelattavaksi. Pelaaja voi aloittaa pelin ja pelata miin
 ## Viikko 6
 
 Peli on saanut lisäyksi, jotka tekevät pelistä paljon mukavmpia. Edellisen viikon alueiden avautuminen ekasta klikkauksesta on laajennettu niin, että nyt jopa muilla klikauksilla tyhjään alueeseen, sen viereiset alueet avautuvat. Peliin on lisätty ääniefektejä avaamiselle ja räjähdykselle, joilla pelistä saadaan mieleenkiintoisempi. Myös kuvia on muutettu, jotta ne näyttäisi paremmilta.
+
+## Viikko 7
+
+Viimeiselle viikolle peiin on lisätty uusia toiminnallisuuksia, jotka parantaa pelikokemusta. Nytten pelaaja voi nähdä pelin aikana paljonko hänellä on jäljellä lippuja. Lippuja on pelin alussa miinojen verran eikä pelaaja voi laittaa enempää lippuja. Mikäli pelaaja häviää tai voittaa peli ei enää sammu vaan johtaa ikkunaan, jossa hän voi aloittaa uuden pelin. Vähän on myös muokattu taustoja.
