@@ -17,6 +17,7 @@ Miinaharava on klassikkopeli vielä 80-luvulta. Tässä projektissa pääsette p
   
 * [Changelog](https://github.com/acpeltol/ot-harjoitusty-/blob/main/miinaharava/dokumentaatio/changelog.md)
 * [Arkkitehtuurikuvaus](https://github.com/acpeltol/ot-harjoitusty-/blob/main/miinaharava/dokumentaatio/arkkitehtuurikuvaus.md)
+* [Testikattavuus](https://github.com/acpeltol/ot-harjoitusty-/blob/main/miinaharava/dokumentaatio/testi.md)
 
 ## Asennus 
 
