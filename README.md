@@ -4,9 +4,10 @@ Miinaharava on klassikkopeli vielä 80-luvulta. Tässä projektissa pääsette p
 
 ## Viimeinen realease
 
-* [Realease](https://github.com/acpeltol/ot-harjoitusty-/releases/tag/Viikko5)
+* [Realease Viikko5](https://github.com/acpeltol/ot-harjoitusty-/releases/tag/Viikko5)
 
-* [Realease2](https://github.com/acpeltol/ot-harjoitusty-/releases/tag/Viikko6)
+* [Realease Viikko6](https://github.com/acpeltol/ot-harjoitusty-/releases/tag/Viikko6)
+* [Realease Viikko7](https://github.com/acpeltol/ot-harjoitusty-/releases/tag/Viikko7)
 
 ## Dokumentaatio
 
