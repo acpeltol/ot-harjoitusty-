@@ -5,8 +5,19 @@ from enteties.filed_start import FieldStart
 
 
 class MineFieldMedium:
-    ' ' 'Class for creating a mine field and handeling game status' ' '
+    """ Luokka, joka luo pelin kentän ja vastaa sen tilasta"""
+
     def __init__(self, master, width, height, image_size, flags_count, parent):
+
+        """ Luokkan konstruktori
+        Args:
+            master : Tkinterin pääikkuna
+            width : Kentän leveys
+            height : Kentän korkeus
+            image_size : Taustakuvan koko
+            flags_count : Lippujen määrä
+            parent: Vanhempi luokka, josta kutsutaan tätä luokkaa
+        """
         self.master = master
         self.width = width
         self.height = height
@@ -22,7 +33,13 @@ class MineFieldMedium:
         self.flag_label = None
 
     def check_flagged(self, x, y):
-        ' ' 'Checking if certain field is flagged and update the information in the class' ' '
+        """  Tarkistetaan onko kenttä lippu ja muutetaan 
+        käytössä olevien lippujen määrää
+        Args:
+            x : Kentän x-koordinaatti
+            y : Kentän y-koordinaatti
+
+        """
         if self.field[y][x].is_flagged is True:
             if (x, y) in self.flags:
                 return
@@ -37,7 +54,11 @@ class MineFieldMedium:
         self.draw_flag_count(True)
 
     def check_if_empty_field(self, x, y):
-        ' ' 'Checking if certain field is empty and call another function to open fields nearby' ' '
+        """Tarkistetaan, että onko avatun kentän vieressä miinoja ja avataan sitten viereiset kentät
+        Args:
+            x : Kentän x-koordinaatti
+            y : Kentän y-koordinaatti
+        """
         if self.field[y][x].is_opened is False:
             return
         if self.field[y][x].mines_near_count != 0:
@@ -50,7 +71,11 @@ class MineFieldMedium:
         self.field_start.open_fields((x, y))
 
     def check_vicotry(self, count):
-        ' ' 'Checking if the game is won' ' '
+        """Tarkistetaan, että onko peli voitettu
+
+        Args:
+            count : Avattujen kenttien määrä
+        """
         if count == self.width * self.height - len(self.mines):
             print("You won!")
             self.game_goig = False
@@ -61,7 +86,11 @@ class MineFieldMedium:
             self.parent.choose_difficulty()
 
     def chekc_loose(self, x, y):
-        ' ' 'Checking if the game is lost' ' '
+        """Tarkistetaan, että onko peli hävitty
+        Args:
+            x : Kentän x-koordinaatti
+            y : Kentän y-koordinaatti
+        """
         if self.field[y][x].is_mine is True and self.field[y][x].is_opened is True:
             print("Destroy the window")
             self.game_goig = False
@@ -73,7 +102,7 @@ class MineFieldMedium:
             self.parent.choose_difficulty()
 
     def game_status(self):
-        ' ' 'Checking the game status by looping the state of every field' ' '
+        """ Pelin tilan tarkistus """
 
         opened_count = 0
 
@@ -97,19 +126,22 @@ class MineFieldMedium:
         self.master.after(100, self.game_status)
 
     def draw_flag_count(self, being=False):
-        ' ' 'Drawing the flag count on the screen' ' '
+        """Lippujen määrän piirtäminen
+        Args:
+            being : Onko lipujen määrä jo piirretty (True) vai ei (False)
+        """
 
         if being is False:
             # Genoroitu alkaa
             self.flag_label = tk.Label(self.master, text=f"Flags: {self.flags_count}", font=("Arial", 14))
-            self.flag_label.pack(pady=(5, 0))  # top padding only
+            self.flag_label.pack(pady=(5, 0))
             # Genoroitu päättyy
         else:
             self.flag_label.config(text=f"Flags: {self.flags_count}")
             self.flag_label.update_idletasks()
 
     def create_field(self):
-        print("Creating field")
+        """Kentän ja alueiden luominen"""
 
         # Generoitu alkaa
 
@@ -133,5 +165,4 @@ class MineFieldMedium:
                 self.field[y][x] = Field(grid_frame, x, y, self.image_size, self)
                 self.field[y][x].draw_field()
 
-        # self.field_start.start(self.after_field_created)
         self.field_start.start(self.game_status)

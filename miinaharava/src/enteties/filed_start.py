@@ -3,8 +3,12 @@ import pygame as pg
 
 
 class FieldStart:
-    ' ' 'Class for handling the start of the game, first click and setting the mines' ' '
+    """ Luokka, joka käsittelee pelin aloitusta ja miinojen asettamista"""
     def __init__(self, parent):
+        """ Luokkan konstruktori
+        Args:
+            parent: Vanhempi luokka, josta kutsutaan tätä luokkaa
+        """
         self.parent = parent
         self.width = parent.width
         self.height = parent.height
@@ -13,7 +17,7 @@ class FieldStart:
         self.oppened = None
 
     def set_mines(self):
-        ' ''Placing the mines into fields randoly' ' '
+        """ Asettaa miinat kentälle arpomalla"""
         pos = [(x, y) for x in range(self.width) for y in range(self.height)
                if (x, y) not in self.banned]
 
@@ -25,7 +29,11 @@ class FieldStart:
             self.parent.field[mine[1]][mine[0]].is_mine = True
 
     def check_mines_blcok(self, x, y):
-        ' ' 'Checking how many mines are near fields' ' '
+        """ Tarkistaa miinojen määrän kentän ympärillä
+        Args:
+            x : Kentän x-koordinaatti
+            y : Kentän y-koordinaatti
+        """
         count = 0
         for i in range(-1, 2):
             for j in range(-1, 2):
@@ -39,7 +47,7 @@ class FieldStart:
         self.parent.field[y][x].mines_near_count = count
 
     def set_mines_near(self):
-        ' ' 'Checking if field is mine, if not then calling mines near function' ' '
+        """Tarkistaa, että onko kenttä miina ja jos ei niin kutsuu miinojen tarkistusta"""
         for y in range(self.height):
             for x in range(self.width):
                 if self.parent.field[y][x].is_mine is True:
@@ -47,7 +55,10 @@ class FieldStart:
                 self.check_mines_blcok(x, y)
 
     def open_fields(self, bage):
-        ' ' 'Opening the fields near by of empty field' ' '
+        """ Avaa vierseiset kentät, siinä kentässä, jossa ei ole yhtäkään miinaa vieressä
+            Args:
+                bage : Kentän koordinaatti
+        """
 
         y = bage[1]
         x = bage[0]
@@ -79,6 +90,11 @@ class FieldStart:
         self.open_fields(self.oppened)
 
     def start(self, finnish):
+
+        """ Looppaa kenttien välillä kunnes löytää ensimmäisen avatun kentän
+        Args:
+            finnish : Funktio, joka kutsutaan kun alku toimenpiteet on hoidettu
+        """
 
         for y in range(self.height):
             for x in range(self.width):

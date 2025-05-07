@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 
 
 class Field:
-    ' ' 'Class for creating one field and handeling the status of it' ' '
+    """ Luokka, joka luo pelin kentän ja vastaa sen tilasta """
     def __init__(self, master, x, y, size, parent):
         self.coordinates = (x, y)
         self.parent = parent
@@ -18,7 +18,7 @@ class Field:
         self.button = None
 
     def draw_field(self):
-        ' ' 'Drawing a field button and setting the size of it' ' '
+        """ Piirettään kenttä ja tehdään siitä nappi """
         # Osittain Generoitu alkaa
 
         self.button = tk.Button(self.master, text="", width=2, height=1,
@@ -30,14 +30,21 @@ class Field:
         # Osittain Generoitu päättyy
 
     def check_sound(self, many, file):
-        ' ' 'Play the sound effect' ' '
+        """ Soitetaan ääniefekti jos halutaan
+        Args:
+            many : Onko monta ääntä ja jos on niin ei soiteta ääntä (True) tai ei (False)
+            file : Äänitiedoston nimi
+        """
         if many is False:
             pg.mixer.init()
             sound = pg.mixer.Sound(file)
             sound.play()
 
     def draw_button(self, image):
-        ' ' 'Drawing the image on the button' ' '
+        """ Piirettään nappiin kuva
+        Args:
+            image : Kuvatiedoston nimi
+        """
         image = ImageTk.PhotoImage(Image.open(
                 image).resize((self.size, self.size)))
         self.button.config(image=image)
@@ -46,7 +53,10 @@ class Field:
 
     def on_right_click(self, event):  # pylint: disable=unused-argument
         # Event handleri toimii kun on event atribuutti. Ilman sitä ei toimi
-        ' ' 'Handling the right click event' ' '
+        """ funktio, joka käsittelee hiiren oikean napin klikkauksen eli lipun laittamisen tai poistamisen
+        Args:
+            event : tapahtuma (Ei käytössa, mutta ohjelma vaatii sen)
+        """
 
         if self.is_opened:
             return
@@ -67,7 +77,11 @@ class Field:
             #print(f"Button ({self.x}, {self.y}) flagged.")
 
     def on_click(self, many = False):
-        ' ' 'Handling the left click event' ' '
+        """ funktio, joka käsittelee hiiren vasemman napin klikkauksen eli kentän avaamisen
+        Args:
+            many : Onko monta ääntä ja jos on niin ei soiteta ääntä (True) tai ei (False)
+        
+        """
 
         if self.is_opened or self.is_flagged:
             return

@@ -2,18 +2,21 @@ import tkinter as tk
 from enteties.mine_field_medium import MineFieldMedium
 
 class Tkdecorator():
-    ' ' 'Class for creating a tkinter window and start the game' ' '
+    """ Luokka, joka luo ikkunan ja antaa käyttäjälle mahdollisuuden valita vaikeustason"""
     def __init__(self, master):
         self.master = master
         self.field = None
 
     def clear_window(self):
-        ' ' 'Clear the window' ' '
+        """ Puhdisaa ikkunan tkinterin komponenteista"""
         for i in self.master.winfo_children():
             i.destroy()
 
     def start_game(self, difficulty):
-        ' ' 'Start the game and create a mine field' ' '
+        """ Aloittaa pelin ja kutsuu kentän luomista
+        Args:
+            difficulty : Vaikeustaso 1,2 tai 3
+        """
         self.clear_window()
 
         self.master.configure(bg="lightgrey")
@@ -31,14 +34,21 @@ class Tkdecorator():
         self.field.create_field()
 
     def draw_button(self, text,difficulty):
-        ' ' 'Draw the button' ' '
+        """ Piirtää napin
+        Args:
+            text : Napin teksti
+            difficulty : Vaikeustaso 1,2 tai 3
+        """
 
         button1 = tk.Button(self.master, text=text,
                             command=lambda: self.start_game(difficulty))
         button1.pack(pady=5)
 
     def draw_label(self, text):
-        ' ' 'Draw the label' ' '
+        """ Piirtää labelin
+        Args:
+            text : Labelin teksti
+        """
 
         label3 = tk.Label(self.master, bg="lightgreen",
                           text=text)
@@ -46,7 +56,7 @@ class Tkdecorator():
 
 
     def choose_difficulty(self):
-        ' ' 'Drawing window to choose the difficulty of the game' ' '
+        """ Piirtää ikkunan, jossa käyttäjä voi valita vaikeustason """
         self.clear_window()
 
         self.master.configure(bg="lightgreen")
@@ -66,7 +76,8 @@ class Tkdecorator():
         self.draw_label("17x17, 60 mines")
 
     def decorate(self):
-        ' ' 'Create start window' ' '
+        """ Luo ikkunan, jossa pelaaja voi aloittaa pelin """
+
         self.master.title("Minesweeper")
 
         self.master.geometry("1200x1000")
