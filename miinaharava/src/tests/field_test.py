@@ -49,9 +49,6 @@ class TestDecorator(unittest.TestCase):
         self.wolf.check_sound = MagicMock()
         self.wolf.draw_button = MagicMock()
         self.wolf.is_opened = True
-        # self.wolf.on_right_click()
-        # self.wolf.check_sound.assert_called_once()
-        # self.wolf.draw_button.assert_called_once()
         self.assertEqual(self.wolf.on_right_click("MouseButton-3"), None)
 
     def test_on_right_click_is_not_flagged(self):
