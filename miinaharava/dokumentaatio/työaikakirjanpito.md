@@ -28,4 +28,13 @@ Yhteensä 14 tuntia
 
 Yhteensä 15 tuntia
 
-Kokoprojektiin menny aika tähän mennessä 52 tuntia
+- 2.5 | 3 tuntia | Uuden toiminnallisuuden lisämistä
+- 3.5 | 1 tuntia | Refaktorointi ja testejen tekemistä
+- 4.5 | 2 tuntia | Refaktorointi ja testejen tekemistä
+- 5.5 | 3 tuntia | Testejen kirjoittamista
+- 6.5 | 4 tuntia | Dokumentaatiota, koodin parantamista ja tekoälyselvitys
+- 7.5 | 3 tuntia | Dokumentaatiota
+
+Yhteensä 16 tuntia
+
+Kokoprojektiin menny aika tähän mennessä 68 tuntia
